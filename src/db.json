@@ -1,0 +1,178 @@
+{
+  "products": [
+    {
+      "id": "2",
+      "name": "Mid Burger",
+      "price": 6.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "3",
+      "name": "Small Burger",
+      "price": 4.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "4",
+      "name": "Sauced Fries",
+      "price": 3.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 2
+    },
+    {
+      "id": "5",
+      "name": "Cola",
+      "price": 1.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "6",
+      "name": "Bottle of Water",
+      "price": 1.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "7",
+      "name": "Hot Burger",
+      "price": 5.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "8",
+      "name": "Cheeseburger",
+      "price": 7.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "9",
+      "name": "Loaded Fries",
+      "price": 4.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 2
+    },
+    {
+      "id": "10",
+      "name": "Iced Tea",
+      "price": 2.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "11",
+      "name": "Veggie Burger",
+      "price": 6.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "12",
+      "name": "Sweet Potato Fries",
+      "price": 3.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 2
+    },
+    {
+      "id": "13",
+      "name": "Milkshake",
+      "price": 4.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "14",
+      "name": "Double Cheeseburger",
+      "price": 8.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "15",
+      "name": "Onion Rings",
+      "price": 3.29,
+      "count": 0,
+      "isInCart": false,
+      "category": 2
+    },
+    {
+      "id": "16",
+      "name": "Lemonade",
+      "price": 2.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "17",
+      "name": "Spicy Chicken Burger",
+      "price": 7.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "18",
+      "name": "Garlic Parmesan Fries",
+      "price": 4.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 2
+    },
+    {
+      "id": "19",
+      "name": "Fruit Punch",
+      "price": 2.99,
+      "count": 0,
+      "isInCart": false,
+      "category": 3
+    },
+    {
+      "id": "20",
+      "name": "Turkey Burger",
+      "price": 6.49,
+      "count": 0,
+      "isInCart": false,
+      "category": 1
+    },
+    {
+      "id": "21",
+      "name": "Taco",
+      "price": 10,
+      "category": 1,
+      "count": 0,
+      "isInCart": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Burger"
+    },
+    {
+      "id": "2",
+      "name": "Fries"
+    },
+    {
+      "id": "3",
+      "name": "Drinks"
+    }
+  ]
+}
