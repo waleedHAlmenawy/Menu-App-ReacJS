@@ -21,7 +21,7 @@ export default function Menu({ items, setItems, categories }) {
   const [currentRecords, setCurrentRecords] = useState([]);
 
   useEffect(() => {
-    if(!newItems.length) {
+    if (!newItems.length) {
       newItems = [...items];
 
       handlerPagination(newItems.length / pageSize);
@@ -46,12 +46,12 @@ export default function Menu({ items, setItems, categories }) {
     handlerPagination(searchedItems.length / pageSize);
 
     handlerSelectPage(1);
-    
+
     start = (selectedPage - 1) * pageSize;
     end = start + pageSize;
 
     setCurrentRecords(searchedItems.slice(start, end));
-    
+
   }, [searchInput]);
 
   /* Handlers */
@@ -82,11 +82,13 @@ export default function Menu({ items, setItems, categories }) {
 
     handlerSelectPage(1);
 
+    setSearchInput("");
+
     setSelectedCategoryId(categoryId);
   }
 
-  function handlerSearch(searchInput) {
-    setSearchInput(searchInput.target.value);
+  function handlerSearch(e) {
+    setSearchInput(e.target.value);
     setSelectedPage(1);
   }
 
@@ -113,13 +115,13 @@ export default function Menu({ items, setItems, categories }) {
   return (
     <div className="grid grid-cols-4">
       <div className="flex flex-1 flex-col">
-        <Search handlerSearch={handlerSearch}></Search>
+        <Search searchInput={searchInput} handlerSearch={handlerSearch}></Search>
         <Filter
-            category={{ id: "0", name: "All" }}
-            handlerFilter={handlerFilter}
-            selectedCategoryId={selectedCategoryId}
-            key={0}
-          ></Filter>
+          category={{ id: "0", name: "All" }}
+          handlerFilter={handlerFilter}
+          selectedCategoryId={selectedCategoryId}
+          key={0}
+        ></Filter>
         {categories.map((category) => (
           <Filter
             category={category}
@@ -142,7 +144,7 @@ export default function Menu({ items, setItems, categories }) {
 
           <tbody>
             {currentRecords.map((item) => {
-              return <Item item={item} handlerAddToCart={handlerAddToCart} key={item.id}/>;
+              return <Item item={item} handlerAddToCart={handlerAddToCart} key={item.id} />;
             })}
           </tbody>
         </table>
