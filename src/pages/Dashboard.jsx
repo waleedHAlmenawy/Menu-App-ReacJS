@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import Pen from "../svg/Pen";
 import Bin from "../svg/Bin";
+import LoadingSpin from "../components/LoadingSpin";
+import { Height } from "@mui/icons-material";
 
 export default function Dashboard({ items, setItems }) {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ export default function Dashboard({ items, setItems }) {
   }
 
   return (
-    <div className="grid grid-cols-1 m-5">
+    items[0] ? <div className="grid grid-cols-1 m-5">
       <button
         className="btn bg-slate-300 col-span-1 mb-5 hover:bg-green-400 transition-all"
         onClick={() => navigate("itemForm", { state: "create" })}
@@ -73,6 +75,9 @@ export default function Dashboard({ items, setItems }) {
           </tbody>
         </table>
       </div>
-    </div>
+    </div> :
+      <div className="flex justify-center align-middle" style={{ height: "90vh" }}>
+        <LoadingSpin />
+      </div>
   );
 }

@@ -2,16 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    categories: [],
-    status: 'pending',
-    error: null
+  categories: [],
+  status: 'pending',
+  error: null
 };
 
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
     const { data } = await axios.get("http://localhost:3000/categories");
-
     return data;
   }
 );
@@ -26,16 +25,16 @@ export const categorySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.pending, (state, action) => {
-        state.status = 'loading'
+      state.status = 'loading'
     })
-    .addCase(fetchCategories.fulfilled, (state, action) => {
+      .addCase(fetchCategories.fulfilled, (state, action) => {
         state.status = 'complated';
         state.categories = state.categories.concat(action.payload);
-    })
-    .addCase(fetchCategories.rejected, (state, action) => {
+      })
+      .addCase(fetchCategories.rejected, (state, action) => {
         state.status = 'error';
         state.error = action.error.message;
-    })
+      })
   }
 });
 

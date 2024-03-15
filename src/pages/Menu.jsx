@@ -4,28 +4,34 @@ import Filter from "../components/Filter";
 import Search from "../components/Search";
 import PaginationButton from "../components/PaginationButton";
 import Item from "../components/Item";
+import SkeletonRow from "../components/SkeletonRow";
+import { selectAllCategories } from "../features/categoriesSlice";
+import { useSelector } from "react-redux";
 
 const pageSize = 4;
 
 let start = 0;
 let end = 0;
 let newItems = [];
+let skeleton = [1, 1, 1, 1];
 
-export default function Menu({ items, setItems, categories }) {
+export default function Menu({ items, setItems }) {
   /* States */
-  
+
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [numberOfPages, setNumberOfPages] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [currentRecords, setCurrentRecords] = useState([]);
+  const categories = useSelector(selectAllCategories);
+
 
   useEffect(() => {
     handlerFilter(selectedCategoryId);
 
     console.log("heelll");
   }, []);
-  
+
   useEffect(() => {
     if (!newItems.length) {
       newItems = [...items];
@@ -37,7 +43,7 @@ export default function Menu({ items, setItems, categories }) {
     } else {
       handlerSelectPage(selectedPage);
     }
-  }, [items]);
+  }, [items, categories]);
 
   useEffect(() => {
     let searchedItems = [];
@@ -73,7 +79,7 @@ export default function Menu({ items, setItems, categories }) {
     updatedItems[i].isInCart = !updatedItems[i].isInCart;
     newItems[j].isInCart = !newItems[j].isInCart;
     updatedItems[i].count = 1;
-    
+
     setItems(updatedItems);
   }
 
@@ -149,9 +155,9 @@ export default function Menu({ items, setItems, categories }) {
           </thead>
 
           <tbody>
-            {currentRecords.map((item) => {
+            {items[0] ? currentRecords.map((item) => {
               return <Item item={item} handlerAddToCart={handlerAddToCart} key={item.id} />;
-            })}
+            }) : skeleton.map((i) => <SkeletonRow height={50} />)}
           </tbody>
         </table>
 

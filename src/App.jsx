@@ -12,6 +12,7 @@ import axios from "axios";
 import Form from "./pages/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories, selectAllCategories } from "./features/categoriesSlice";
+import sleep from "./utils/sleep";
 
 const App = () => {
   /* States */
@@ -22,12 +23,12 @@ const App = () => {
 
   const dispatch = useDispatch();
   const categories = useSelector(selectAllCategories);
-  const categoriesStatus = useSelector(state => state.categories.status)
+  const categoriesStatus = useSelector(state => state.categories.status);
 
   useEffect(() => {
     async function getProducts() {
+      await sleep(5000);
       const { data } = await axios.get("http://localhost:3000/products");
-      console.log(data);
       setItems(data);
     }
 
