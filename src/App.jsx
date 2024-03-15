@@ -17,22 +17,23 @@ const App = () => {
   /* States */
 
   const [items, setItems] = useState([]);
-  const dispatch = useDispatch();
+  
+  /* Redux */
 
+  const dispatch = useDispatch();
   const categories = useSelector(selectAllCategories);
   const categoriesStatus = useSelector(state => state.categories.status)
 
   useEffect(() => {
     async function getProducts() {
       const { data } = await axios.get("http://localhost:3000/products");
+      console.log(data);
       setItems(data);
     }
 
-    if(categoriesStatus === 'pending') {
+    if (categoriesStatus === 'pending') {
       dispatch(fetchCategories());
     }
-
-    console.log(categories);
 
     getProducts();
   }, [categoriesStatus, dispatch]);
@@ -58,7 +59,7 @@ const App = () => {
             path="/cart"
             element={
               <Cart
-                items={items.filter((item) => item.isInCart)}
+                items={items}
                 setItems={setItems}
               />
             }

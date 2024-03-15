@@ -13,7 +13,7 @@ let newItems = [];
 
 export default function Menu({ items, setItems, categories }) {
   /* States */
-
+  
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [numberOfPages, setNumberOfPages] = useState([]);
@@ -21,12 +21,19 @@ export default function Menu({ items, setItems, categories }) {
   const [currentRecords, setCurrentRecords] = useState([]);
 
   useEffect(() => {
+    handlerFilter(selectedCategoryId);
+
+    console.log("heelll");
+  }, []);
+  
+  useEffect(() => {
     if (!newItems.length) {
       newItems = [...items];
 
       handlerPagination(newItems.length / pageSize);
 
       handlerSelectPage(selectedPage);
+
     } else {
       handlerSelectPage(selectedPage);
     }
@@ -66,8 +73,7 @@ export default function Menu({ items, setItems, categories }) {
     updatedItems[i].isInCart = !updatedItems[i].isInCart;
     newItems[j].isInCart = !newItems[j].isInCart;
     updatedItems[i].count = 1;
-
-
+    
     setItems(updatedItems);
   }
 

@@ -28,7 +28,9 @@ export default function Cart({ items, setItems }) {
     let newItems = [...items];
     var i = items.findIndex((newItem) => newItem.name === item.name);
 
+    newItems[i] = { ...newItems[i] }
     newItems[i].isInCart = false;
+
     setItems(newItems);
   }
 
@@ -47,19 +49,23 @@ export default function Cart({ items, setItems }) {
     <>
       <div className="p-1">
 
-        {items.map((item) => (
-          <CartItem
-            item={item}
-            handlerDecrement={handlerDecrement}
-            handlerIncrememnt={handlerIncrememnt}
-            handlerDelete={handlerDelete}
-            key={item.name}
-          />
-        ))}
+        {items.map((item) => {
+          if (item.isInCart) {
+            return (
+              <CartItem
+                item={item}
+                handlerDecrement={handlerDecrement}
+                handlerIncrememnt={handlerIncrememnt}
+                handlerDelete={handlerDelete}
+                key={item.name}
+              />
+            )
+          }
+        })}
 
       </div>
 
-      {items.length !== 0 && (
+      {items.findIndex((item) => item.isInCart) !== -1 && (
         <div className="grid">
           <button
             className="border border-b-2 bg-slate-200 hover:bg-slate-400 p-2 m-3 rounded transition-all"
@@ -70,7 +76,7 @@ export default function Cart({ items, setItems }) {
         </div>
       )}
 
-      {items.length === 0 ? (
+      {items.findIndex((item) => item.isInCart) === -1 ? (
         <div className="flex justify-center items-center h-80 text-7xl text-slate-300">
           cart is empty
         </div>

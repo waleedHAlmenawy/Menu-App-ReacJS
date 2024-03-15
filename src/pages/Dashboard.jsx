@@ -50,7 +50,7 @@ export default function Dashboard({ items, setItems }) {
           <tbody>
             {items.map((item, index) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.name}</td>
                   <td>{item.price}</td>
